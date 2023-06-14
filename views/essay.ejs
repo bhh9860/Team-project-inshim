@@ -6,10 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>에세이 전체페이지</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+  crossorigin="anonymous"
+  />
   <link rel="stylesheet" href="/css/essay.css" />
+  <link rel="stylesheet" href="/css/header+modal_form.css" />
 
 </head>
 
+<!-- header -->
 <header>
   <nav class="sub-header">
     <ul class="sub-menu">
@@ -17,8 +26,231 @@
       <li><a href="">고객지원</a></li>
       <li><a href="">예약조회</a></li>
     </ul>
-    <div class="sub-login">
-      <a href="/inshim/login">로그인/회원가입</a>
+    <div class="sub-login" id="login-section">
+      <div
+        class="modal fade"
+        id="popup_login_register"
+        aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+                로그인
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form name="login">
+                <input
+                  name="login_user_id"
+                  id="login_uesr_id"
+                  type="text"
+                  placeholder="아이디"
+                  required
+                />
+                <br />
+                <input
+                  name="login_user_pw"
+                  id="login_user_pw"
+                  type="password"
+                  placeholder="비밀번호"
+                  required
+                />
+                <br />
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" onclick="loginFunc()">
+                로그인
+              </button>
+              <button
+                class="btn btn-primary"
+                data-bs-target="#popup_register"
+                data-bs-toggle="modal"
+              >
+                회원가입
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="popup_register"
+        aria-hidden="true"
+        aria-labelledby="exampleModalToggleLabel2"
+        tabindex="-1"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
+                회원가입
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form name="register">
+                <label for="register_user_id">아이디</label>
+                <br />
+                <input
+                  name="register_user_id"
+                  id="register_user_id"
+                  type="text"
+                  placeholder="아이디를 입력해주세요"
+                />
+                <button
+                  type="button"
+                  id="check_user_id"
+                  onclick="checkUserId()"
+                >
+                  아이디 중복 검사
+                </button>
+                <br />
+                <label for="register_user_pw">비밀번호</label>
+                <br />
+                <input
+                  name="register_user_pw"
+                  id="register_user_pw"
+                  type="password"
+                  placeholder="비밀번호를 입력해주세요"
+                />
+                <br />
+                <label for="register_user_name">이름</label>
+                <br />
+                <input
+                  name="register_user_name"
+                  id="register_user_name"
+                  type="text"
+                  placeholder="이름을 입력해주세요"
+                />
+                <br />
+                <label for="register_user_country">국적</label>
+                <br />
+                <input
+                  name="register_user_country"
+                  id="register_user_country"
+                  type="text"
+                  placeholder="국적을 입력해주세요"
+                />
+                <br />
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary" onclick="registFunc()">
+                회원가입
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a
+        class="btn"
+        data-bs-toggle="modal"
+        href="#popup_login_register"
+        role="button"
+        >로그인/회원가입</a
+      >
+    </div>
+    <div id="sub-mypage" style="display: none">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn"
+        data-bs-toggle="modal"
+        data-bs-target="#popup_mypage"
+      >
+        마이페이지
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="popup_mypage"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">
+                마이페이지
+              </h1>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div id="user_info">
+                <div id="user_id">
+                  아이디:
+                  <p id="user_id_text"></p>
+                </div>
+                <div id="user_name">
+                  이름:
+                  <p id="user_name_text"></p>
+                </div>
+                <div id="user_country">
+                  국적:
+                  <p id="user_country_text"></p>
+                </div>
+              </div>
+              <form id="change_password_form" name="change_password_form">
+                <label for="current_password">현재 비밀번호:</label>
+                <input
+                  type="password"
+                  id="current_password"
+                  name="currentPassword"
+                  required
+                />
+                <br />
+                <label for="new_password">새로운 비밀번호:</label>
+                <input
+                  type="password"
+                  id="new_password"
+                  name="newPassword"
+                  required
+                />
+                <br />
+              </form>
+              <div id="result"></div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                onclick="logoutFunc()"
+              >
+                로그아웃
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onclick="pwChangeFunc()"
+              >
+                비밀번호 변경
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 </header>
@@ -29,11 +261,9 @@
     </div>
     <ul class="main-menu">
       <li><a href="">지역소개</a></li>
-      <li><a href="/inshim/route">여행 코스</a></li>
-      <li><a href="/inshim/essay">여행 후기</a></li>
-      <li><a href="">프로모션</a></li>
+      <li><a href="/inshim/route">코스보기</a></li>
+      <li><a href="/inshim/essay">후기보기</a></li>
     </ul>
-
   </nav>
 </header>
 
@@ -104,7 +334,12 @@
     document.location.href = "/inshim/essay/write";
   }
 </script>
-
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+crossorigin="anonymous"
+></script>
+<script src="/js/header.js"></script>
 </body>
 
 </html>

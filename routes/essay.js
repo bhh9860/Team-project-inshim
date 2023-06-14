@@ -2,12 +2,6 @@ const express = require("express");
 const controller = require("../controller/essay");
 const router = express.Router();
 
-//localhost:PORT/inshim/route
-// router.get("/route", controller.Cgetroute);
-
-//localhost:PORT/inshim/write
-router.post("/essay/write", controller.Cpostroute);
-
 //localhost:PORT/inshim/essay/write
 router.get("/essay/write", controller.Cgetwrite);
 

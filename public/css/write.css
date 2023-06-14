@@ -84,9 +84,7 @@ html {
   color: black;
   font-family: "KimjungchulMyungjo-Bold", sans-serif;
 }
-nav {
-  border-bottom: 1px solid black;
-}
+
 /* .header-logo a:hover {
       color: var(--highlight-color);
     } */
@@ -114,9 +112,16 @@ nav {
   /* justify-content: center; */
 }
 
-h4 {
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+h3 {
+  font-size: 1rem;
   margin-left: 20%;
   margin-right: 20%;
+  margin-top: 1%;
+  margin-bottom: 0.5%;
 }
 
 table {
@@ -190,9 +195,6 @@ td {
   margin-right: 20%;
   justify-content: center;
   padding-top: 6px;
-}
-
-span {
 }
 
 .bookmarkBox {

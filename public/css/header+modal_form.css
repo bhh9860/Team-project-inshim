@@ -1,0 +1,259 @@
+/* 스위트 */
+@font-face {
+  font-family: "SUITE-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 고딕 */
+@font-face {
+  font-family: "KimjungchulGothic-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --font-sm: 14px;
+  --font-md: 18px;
+  --font-lg: 24px;
+  --border-radius: 10px;
+  --font-weight-bold: 700;
+  --font-weight-thin: 300;
+  --main-color: black;
+  --highlight-color: #8dd3c2;
+  --white: #fff;
+  --lightblack: #858585;
+}
+
+/* header css */
+.sub-header {
+  font-family: "SUITE-Regular", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  height: 20px;
+  padding: 30px;
+}
+
+.sub-menu {
+  display: flex;
+  list-style: none;
+}
+
+.sub-menu li a {
+  padding: 10px;
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-thin);
+  text-decoration: none;
+  color: var(--lightblack);
+}
+.sub-menu li a:hover {
+  color: var(--highlight-color);
+}
+
+.sub-login a {
+  padding: 40px;
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-thin);
+  text-decoration: none;
+  color: var(--lightblack);
+}
+.sub-login a:hover {
+  color: var(--highlight-color);
+}
+
+#sub-mypage .mypage {
+  padding: 40px;
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-thin);
+  text-decoration: none;
+  color: var(--lightblack);
+}
+
+#sub-mypage .mypage:hover {
+  color: var(--highlight-color);
+}
+
+.main-header {
+  width: 100%;
+  height: 100px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  font-family: "SUITE-Regular", sans-serif;
+}
+
+.header-logo a {
+  font-weight: var(--font-weight-bold);
+  font-size: 55px;
+  padding: 20px;
+  text-decoration: none;
+  color: black;
+  font-family: "KimjungchulMyungjo-Bold", sans-serif;
+}
+
+.header-logo a:hover {
+  color: black;
+}
+
+.main-menu {
+  display: flex;
+  list-style: none;
+}
+
+.main-menu li a {
+  padding: 30px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  font-size: var(--font-md);
+  text-decoration: none;
+  color: var(--main-color);
+}
+.main-menu li a:hover {
+  color: var(--highlight-color);
+}
+
+/* modal css */
+.modal-header h1 {
+  font-size: var(--font-lg) !important;
+  font-weight: bold;
+  color: black;
+}
+
+.modal-body {
+  width: 100%;
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+.modal-body input {
+  font-family: "SUITE-Regular";
+  display: block;
+  position: relative;
+  left: 20%;
+  margin-bottom: -10px;
+  width: 60%;
+  height: 45px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.modal-footer button {
+  display: block;
+  font-family: "SUITE-Regular";
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: var(--lightblack);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-footer button:hover {
+  background-color: black !important;
+}
+
+form[name="register"] {
+  position: relative;
+}
+
+.modal-body form label {
+  display: block;
+  font-size: var(--font-md);
+  color: #858585;
+  position: relative;
+  top: 25px;
+  left: 5%;
+  padding: 10px;
+}
+
+form[name="register"] input {
+  display: block;
+  position: relative;
+  height: 40%;
+  top: 0%;
+  left: 30%;
+  margin-top: -10%;
+}
+
+#check_user_id {
+  position: relative;
+  display: flex;
+  background-color: #fff;
+  top: 25px;
+  left: 67%;
+  color: #858585;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: var(--font-sm);
+}
+
+#user_info div {
+  display: block;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  font-size: var(--font-md);
+  color: #858585;
+}
+
+#user_info p {
+  display: inline;
+  margin: 0;
+  color: black !important;
+}
+
+#change_password_form {
+  position: relative;
+  width: 100%;
+}
+
+#change_password_form label {
+  display: block;
+  font-size: var(--font-md);
+  color: #858585;
+  position: relative;
+  top: -13px;
+  left: -5px;
+  margin: 5px;
+}
+
+#change_password_form input {
+  display: block;
+  position: relative;
+  height: 40%;
+  top: 0%;
+  left: 30%;
+  margin-top: -13%;
+  width: 70%;
+  padding: 7px;
+}
+
+#register_user_country {
+  position: relative;
+  width: 20%;
+  top: -35px;
+  left: 30%;
+  padding: 7px;
+  font-size: 14px;
+  color: #858585;
+  border-radius: 4px;
+  border-color: #ccc;
+}
+
+input::placeholder {
+  font-size: 14px;
+}

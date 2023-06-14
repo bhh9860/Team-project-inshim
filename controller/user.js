@@ -63,11 +63,20 @@ exports.Cpost_changePassword = async (req, res) => {
       currentPassword,
       salt
     );
+    let passwordRegex =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,20}$/;
 
     if (dbPassword !== hashedCurrentPassword) {
       res.send({
         result: false,
         message: "현재 비밀번호가 일치하지 않습니다.",
+      });
+      return false;
+    } else if (!passwordRegex.test(newPassword)) {
+      res.send({
+        result: false,
+        message:
+          "비밀번호는 8~20자리의 영문 대문자, 소문자, 숫자, 특수문자(!@#$%^&*)가 포함되어야 합니다.",
       });
       return false;
     } else {
@@ -117,9 +126,7 @@ exports.Cpost_checkUserId = async (req, res) => {
 exports.Cpost_register = async (req, res) => {
   const isUserIdExist = await checkUserIdExists(req.body.user_id);
 
-  if (isUserIdExist) {
-    res.send({ result: false, message: "이미 사용 중인 아이디입니다." });
-  } else {
+  if (isUserIdExist === false) {
     const { hashedPassword, salt } = await createHashedPassword(
       req.body.user_pw
     );
@@ -140,6 +147,8 @@ exports.Cpost_register = async (req, res) => {
         message: "회원가입에 실패했습니다. 다시 시도해주세요.",
       });
     }
+  } else {
+    res.send({ result: false, message: "아이디 중복 검사를 통과해야 합니다." });
   }
 };
 
