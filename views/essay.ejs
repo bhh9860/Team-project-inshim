@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>에세이 전체페이지</title>
+  <link rel="stylesheet" href="/css/essay.css" />
+
+</head>
+
+<header>
+  <nav class="sub-header">
+    <ul class="sub-menu">
+      <li><a href="">InShim소개</a></li>
+      <li><a href="">고객지원</a></li>
+      <li><a href="">예약조회</a></li>
+    </ul>
+    <div class="sub-login">
+      <a href="/inshim/login">로그인/회원가입</a>
+    </div>
+  </nav>
+</header>
+<header>
+  <nav class="main-header">
+    <div class="header-logo">
+      <a href="/inshim">INSHIM</a>
+    </div>
+    <ul class="main-menu">
+      <li><a href="">지역소개</a></li>
+      <li><a href="/inshim/route">여행 코스</a></li>
+      <li><a href="/inshim/essay">여행 후기</a></li>
+      <li><a href="">프로모션</a></li>
+    </ul>
+
+  </nav>
+</header>
+
+<!-- 후기페이지 헤더 -->
+<header>
+  <div class="essayHeaderBox">
+    <h2>후기보기</h2>
+    <div class="essayWtBtBx">
+      <button class="essayWtBt" type="button" onclick="createWrite()">글작성
+        <img class="pencile" src="/images/pen.png" alt="write">
+      </button>
+    </div>
+  </div>
+</header>
+<div class="tablebox">
+  <table border="0" cellspacing="2" cellpadding="11">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>제목</th>
+        <th>도시</th>
+        <th>기간</th>
+        <th>작성일</th>
+        <!-- <th>조회수</th> -->
+      </tr>
+      <hr>
+    </thead>
+    <tbody>
+      <% for(let i=0; i < data.length; i++) { %>
+        <tr id="tr_<%= data[i].F_route_id %>">
+        <tr id="tr_<%= data[i].idx %>" class="essay-row" data-route-id="<%= data[i].idx %>">
+          <td>
+            <%= data[i].idx %>
+          </td>
+          <td>
+            <%= data[i].detail_Etitle %>
+          </td>
+          <td>
+            <%= data[i].detail_city %>
+          </td>
+          <td>
+            <%= data[i].detail_day %>
+          </td>
+          <td>
+            <%= data[i].formatted_regdate %>
+          </td>
+          <!-- <td class="hit-count"><%= data[i].hit %></td> -->
+          </a>
+        </tr>
+        <% } %>
+    </tbody>
+  </table>
+</div>
+<script>
+  //조회수 만들기 전 코드
+  document.querySelectorAll(".essay-row").forEach((row) => {
+    row.addEventListener("click", () => {
+      const numberId = row.dataset.routeId;
+      window.location.href = `/inshim/essay/view/${numberId}`;
+    });
+  })
+
+
+
+
+
+  function createWrite() {
+    document.location.href = "/inshim/essay/write";
+  }
+</script>
+
+</body>
+
+</html>

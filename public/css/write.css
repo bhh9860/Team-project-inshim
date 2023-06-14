@@ -1,0 +1,202 @@
+/* 고딕 */
+@font-face {
+  font-family: "KimjungchulGothic-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+/* 명조 */
+@font-face {
+  font-family: "KimjungchulMyungjo-Bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+:root {
+  --font-sm: 14px;
+  --font-md: 18px;
+  --font-lg: 24px;
+  --border-radius: 10px;
+  --font-weight-bold: 700;
+  --font-weight-thin: 300;
+  --main-color: black;
+  --highlight-color: #b9f3e4;
+  --white: #fff;
+  --lightblack: #929496;
+}
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: "KimjungchulGothic-Bold", sans-serif;
+}
+.sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  height: 20px;
+  padding: 8px;
+  background-color: white;
+}
+.sub-menu {
+  display: flex;
+  list-style: none;
+}
+.sub-menu li a {
+  padding: 10px;
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-thin);
+  text-decoration: none;
+  color: var(--lightblack);
+}
+.sub-menu li a:hover {
+  color: var(--highlight-color);
+}
+.sub-login a {
+  padding: 40px;
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-thin);
+  text-decoration: none;
+  color: var(--lightblack);
+}
+.sub-login a:hover {
+  color: var(--highlight-color);
+}
+.main-header {
+  background-color: white;
+  width: 100%;
+  height: 100px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.header-logo a {
+  font-weight: var(--font-weight-bold);
+  font-size: 40px;
+  padding: 20px;
+  text-decoration: none;
+  color: black;
+  font-family: "KimjungchulMyungjo-Bold", sans-serif;
+}
+nav {
+  border-bottom: 1px solid black;
+}
+/* .header-logo a:hover {
+      color: var(--highlight-color);
+    } */
+.main-menu {
+  display: flex;
+  list-style: none;
+}
+.main-menu li a {
+  padding: 80px;
+  padding-top: 40px;
+  padding-bottom: 30px;
+  font-size: var(--font-md);
+  font-weight: var(--font-weight-thin);
+  text-decoration: none;
+  color: var(--main-color);
+}
+.main-menu li a:hover {
+  color: var(--highlight-color);
+}
+
+/* table */
+.tablebox {
+  display: flex;
+  /* flex-direction: column; */
+  /* justify-content: center; */
+}
+
+h4 {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+table {
+  justify-content: center;
+  z-index: 10;
+  text-align: center;
+  /* margin-left: auto;
+    margin-right: auto; */
+  width: 100%;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", "맑은 고딕", arial, 굴림, Gulim, sans-serif;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid #444444;
+  padding: 10px;
+}
+
+.essayHeaderBox {
+  display: flex;
+  border-bottom: 2px solid var(--highlight-color);
+  margin-left: 20%;
+  margin-right: 20%;
+  justify-content: space-between;
+}
+
+.essayWtBtBx {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+}
+.essayWtBt {
+  background-color: var(--white);
+  font-weight: bold;
+  font-family: "KimjungchulGothic-Bold", sans-serif;
+  height: 27px;
+  border-width: 1px;
+  border-radius: 2px;
+}
+
+.essayWtBt:hover {
+  color: #b9f3e4;
+}
+
+/* .essayWtBt:hover .pencile {
+    filter: brightness(1.2);
+  } */
+.pencile {
+  width: 12px;
+  padding-left: 1px;
+}
+
+/* 글양식 */
+#essay_title {
+  display: flex;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+#Etitle {
+  width: 100%;
+}
+
+#essay_content {
+  display: flex;
+  margin-left: 20%;
+  margin-right: 20%;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+span {
+}
+
+.bookmarkBox {
+  background-color: #eff3f3;
+  margin-left: 20%;
+  margin-right: 20%;
+}

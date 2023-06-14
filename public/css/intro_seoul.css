@@ -1,0 +1,110 @@
+/* 스위트 */
+@font-face {
+  font-family: "SUITE-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --font-sm: 14px;
+  --font-md: 18px;
+  --font-lg: 24px;
+  --border-radius: 10px;
+  --font-weight-bold: 700;
+  --font-weight-thin: 300;
+  --main-color: black;
+  --highlight-color: #83a69d;
+  --white: #fff;
+  --lightblack: #858585;
+}
+
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-family: "SUITE-Regular", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.img {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.seoul-introduce {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 100px;
+  font-weight: bold;
+  text-align: left;
+  opacity: 0;
+  animation: fade-in 1.5s ease-in-out forwards;
+}
+
+.seoul-sub {
+  position: absolute;
+  top: 110%;
+  left: 150%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 24px;
+  font-weight: lighter;
+  width: 1000px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.button {
+  display: flex;
+  position: absolute;
+  top: 80%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+
+.button a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  text-decoration: none;
+  text-align: center;
+  color: rgb(52, 52, 52);
+  background-color: rgba(255, 255, 255, 0.458);
+  font-size: var(--font-md);
+  font-weight: bold;
+  margin: 50px;
+  border-radius: 75px;
+  opacity: 0;
+  animation: fade-in 1.5s ease-in-out forwards;
+}
+
+.button a:hover {
+  color: white;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

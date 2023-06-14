@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <form name="login">
+    <input name="user_id" id="uesr-id" type="text" placeholder="아이디" required />
+    <br />
+    <input name="user_pw" id="user-pw" type="password" placeholder="비밀번호" required />
+    <br />
+    <button type="button" onclick="loginFunc()">로그인</button>
+    <button type="button" onclick="location.href='/inshim/register'">
+      회원가입
+    </button>
+  </form>
+  <script src="/js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/userinfo.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="sub-header">
+            <ul class="sub-menu">
+                <li><a href="">InShim소개</a></li>
+                <li><a href="">고객지원</a></li>
+                <li><a href="">예약조회</a></li>
+            </ul>
+            <div class="sub-login">
+                <a href="/inshim/login">로그인/회원가입</a>
+            </div>
+        </nav>
+    </header>
+    <header>
+        <nav class="main-header">
+            <div class="header-logo">
+                <a href="/inshim">INSHIM</a>
+            </div>
+            <ul class="main-menu">
+                <li><a href="">지역소개</a></li>
+                <li><a href="/inshim/route">여행 코스</a></li>
+                <li><a href="/inshim/essay">여행 후기</a></li>
+                <li><a href="">프로모션</a></li>
+            </ul>
+
+        </nav>
+    </header>
+    <hr>
+    <main>
+        <div class='main-box'>
+            <div class="main-box-1">
+                <p>여행가고싶은지역</p>
+                <form name="submit">
+                    <select name="city" id="city">
+                        <option value="all">모두</option>
+                        <% for (let i=0; i < routeCity.length; i++ ){%>
+                            <option value="<%= routeCity[i]%>">
+                                <%= routeCity[i]%>
+                            </option>
+                            <%}%>
+                    </select>
+            </div>
+            <div class="main-box-1">
+                <p>기간</p>
+                <select name="day" id="day">
+                    <option value="all">모두</option>
+                    <% for (let i=0; i < routeDay.length; i++ ){%>
+                        <option value="<%= routeDay[i]%>">
+                            <%= routeDay[i]%>
+                        </option>
+                        <%}%>
+                </select>
+                </form>
+            </div>
+        </div>
+        <button class="button" type="button" onclick="submitValue()">검색</button>
+    </main>
+    <hr>
+    <div>
+
+    </div>
+    <section>
+        <div class="section-result">
+        </div>
+    </section>
+    <script>
+        function submitValue() {
+            const form = document.forms["submit"];
+            axios({
+                method: 'POST',
+                url: '/inshim/userinfo',
+                data: {
+                    city: form.city.value,
+                    day: form.day.value
+                }
+            }).then((res) => {
+                //비동기니까 기존에 있던 div를 지워줘야함
+                const sectionResult = document.querySelectorAll('.section-result div').length;
+                if (sectionResult > 0) {
+                    for (let i = 0; i < sectionResult; i++) {
+                        document.querySelector('.section-result div').remove();
+                    }
+                }
+                //결과값
+                console.log(res)
+                for (let i = 0; i < res.data.length; i++) {
+                    const newDiv = document.createElement('div');
+                    newDiv.classList.add('newDiv');
+                    newDiv.innerHTML = i + 1 + '번 루트: ' + res.data[i][0] + '<button type="button" onclick="bookmark(' + res.data[i][1] + ')"><img src="https://ifh.cc/g/P02wO6.png"></button>';
+                    document.querySelector('.section-result').appendChild(newDiv);
+                }
+            })
+            count = document.querySelectorAll('newDiv').length;
+            console.log(count);
+        }
+
+
+        async function bookmark(routeId) {
+            try {
+                const response = await axios({ //해당 즐겨찾기 버튼의 route_id의 값을 post로 write페이지에 보내줌.
+                    method: "POST",
+                    url: "/inshim/essay/write",
+                    data: {
+                        routeId: routeId,
+                    },
+                });
+                const { success } = response.data;
+                if (success) {
+                    alert("즐겨찾기 완료!");
+                } else {
+                    alert("즐겨찾기 실패");
+                }
+            } catch (error) {
+                alert("api 요청 오류", error);
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>

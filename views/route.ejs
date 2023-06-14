@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>루트(북마크 선택) 페이지</h1>
+
+  <table border="1" cellspacing="0">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>도시</th>
+        <th>기간</th>
+        <th>출발지</th>
+        <th>즐겨찾기</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let i=0; i < data.length; i++) { %>
+        <td>
+          <%= data[i].route_id %>
+        </td>
+        <td>
+          <%= data[i].route_city %>
+        </td>
+        <td>
+          <%= data[i].route_day %>
+        </td>
+        <td>
+          <%= data[i].route_start %>
+        </td>
+        <td>
+          <button type="button" onclick="bookmark(Number('<%= data[i].route_id %>'))">
+            즐겨찾기
+          </button>
+        </td>
+        </tr>
+        <% } %>
+    </tbody>
+
+
+    <script>
+      async function bookmark(routeId) {
+
+        try {
+          const response = await axios({ //해당 즐겨찾기 버튼의 route_id의 값을 post로 write페이지에 보내줌.
+            method: "POST",
+            url: "/inshim/essay/write",
+            data: {
+              routeId: routeId,
+            },
+          });
+
+          const { success } = response.data;
+
+          if (success) {
+            alert("즐겨찾기 완료!");
+          } else {
+            alert("즐겨찾기 실패");
+          }
+
+        } catch (error) {
+          alert("api 요청 오류", error);
+        }
+      }
+    </script>
+</body>
+
+</html>

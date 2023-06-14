@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>후기 상세페이지</title>
+  <link rel="stylesheet" href="/css/essayView.css" />
+</head>
+
+<header>
+  <nav class="sub-header">
+    <ul class="sub-menu">
+      <li><a href="">InShim소개</a></li>
+      <li><a href="">고객지원</a></li>
+      <li><a href="">예약조회</a></li>
+    </ul>
+    <div class="sub-login">
+      <a href="/inshim/login">로그인/회원가입</a>
+    </div>
+  </nav>
+</header>
+<header>
+  <nav class="main-header">
+    <div class="header-logo">
+      <a href="/inshim">INSHIM</a>
+    </div>
+    <ul class="main-menu">
+      <li><a href="">지역소개</a></li>
+      <li><a href="/inshim/route">여행 코스</a></li>
+      <li><a href="/inshim/essay">여행 후기</a></li>
+      <li><a href="">프로모션</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- 후기페이지 헤더 -->
+<header>
+  <div class="essayHeaderBox">
+    <h2>후기 상세보기</h2>
+
+    <div class="essayWtBtBx">
+      <button class="essayWtBt" type="button" onclick="backessay()">
+        뒤로가기
+        <img class="pencile" src="/images/pen.png" alt="write" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<body>
+  <!-- 상세페이지 -->
+  <div class="detailbox">
+    <div class="tablebox">
+      <table class="detailView style" border="0">
+        <tr class="detailTitle style">
+          <td class="tdtitle">제목</td>
+          <td>
+            <%= data.detail_Etitle %>
+          </td>
+        </tr>
+
+        <tr class="detailFormat">
+          <td class="tdtitle">작성일시</td>
+          <td>
+            <%=data.formatted_regdate %>
+          </td>
+        </tr>
+
+        <tr class="detailFormat"></tr>
+      </table>
+    </div>
+    <div class="tdComment style">
+      <%= data.detail_Ecomment %>
+    </div>
+  </div>
+
+  <!-- <div class="replybox">
+      <div class="replyInnner style">
+        <textarea
+          name="reply"
+          id="reply"
+          maxlength="300"
+          style="height: 41px; width: 100%"
+          placeholder="댓글 내용을 입력하세요"
+          required
+        ></textarea>
+      </div>
+      <div class="replyBt">
+        <button type="button" onclick="submitReply()">등록</button>
+      </div>
+    </div> -->
+
+  <script>
+    function backessay() {
+      document.location.href = "/inshim/essay";
+    }
+
+      // async function submitReply() {
+      //   const replyContent = document.getElementById("reply").value;
+      //   const idx = "<%=data.idx%>";
+      //   await axios.post(`/inshim/essay/view/${idx}`, { reply: replyContent });
+      // }
+  </script>
+</body>
+
+</html>

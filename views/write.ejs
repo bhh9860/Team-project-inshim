@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>에세이 작성페이지</title>
+  <link rel="stylesheet" href="/css/write.css" />
+</head>
+
+<header>
+  <nav class="sub-header">
+    <ul class="sub-menu">
+      <li><a href="">InShim소개</a></li>
+      <li><a href="">고객지원</a></li>
+      <li><a href="">예약조회</a></li>
+    </ul>
+    <div class="sub-login">
+      <a href="/inshim/login">로그인/회원가입</a>
+    </div>
+  </nav>
+</header>
+<header>
+  <nav class="main-header">
+    <div class="header-logo">
+      <a href="/inshim">INSHIM</a>
+    </div>
+    <ul class="main-menu">
+      <li><a href="">지역소개</a></li>
+      <li><a href="/inshim/route">여행 코스</a></li>
+      <li><a href="/inshim/essay">여행 후기</a></li>
+      <li><a href="">프로모션</a></li>
+    </ul>
+
+  </nav>
+</header>
+
+<!-- 후기작성페이지 헤더 -->
+<header>
+  <div class="essayHeaderBox">
+    <h2>후기작성</h2>
+    <div class="essayWtBtBx">
+      <button class="essayWtBt" type="button" onclick="createWrite()">글작성
+        <img class="pencile" src="/images/pen.png" alt="write">
+      </button>
+    </div>
+  </div>
+</header>
+
+<body>
+  <h4>즐겨찾기 목록 선택</h4>
+  <div class=bookmarkBox style="overflow: auto; height: 100px; scrollbar-width: none;">
+    <div class="tablebox">
+      <% if (data && data.length> 0) { %>
+        <table border="0" cellspacing="0">
+          <thead>
+            <tr>
+              <th></th>
+              <th>지역</th>
+              <th>기간</th>
+              <th>출발지</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i < data.length; i++) { %>
+              <tr id="tr_<%= data[i].F_userinfo_id %>">
+                <td><input type="checkbox" value="<%= data[i].F_route_id %>" /></td>
+                <td class="route_city">
+                  <%= data[i].route_city %>
+                </td>
+                <td class="route_day">
+                  <%= data[i].route_day %>
+                </td>
+                <td>
+                  <%= data[i].detail_comment %>
+                </td>
+              </tr>
+              <% } %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+  <% } else { %>
+    <p>후기를 작성하고 싶으면 즐겨찾기를 추가해주세요</p>
+    <% } %>
+
+      </br>
+
+      <div id="essay_title">
+        <span style=width:40px>제목</span>
+        <input type="text" name="Etitle" id="Etitle" placeholder="글 제목" maxlength="40" required></input>
+      </div>
+
+      <div id="essay_content">
+        <!-- <div class="essay_content">내용</div> -->
+        <span style=width:40px>내용</span>
+        <textarea name="Econtent" id="Econtent" maxlength="1024" style="height:400px; width:100%;"
+          placeholder="글 내용을 작성하세요" required></textarea>
+      </div>
+      </br>
+      <script>
+        //세션값 받았는지 테스트
+        window.addEventListener("load", checkIfLoggedIn);
+        function checkIfLoggedIn() {
+          console.log(JSON.parse(sessionStorage.getItem("loggedin_user"))
+            .userinfo_id)
+        }
+
+        async function createWrite() {
+
+
+
+          const title = document.getElementById("Etitle").value;
+          const content = document.getElementById("Econtent").value;
+
+          if (!title) {
+            alert("제목을 입력해주세요.");
+            return;
+          }
+
+          if (!content) {
+            alert("내용을 입력해주세요.");
+            return;
+          }
+          const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+          let checkedCount = 0;
+          let checkboxValue = null;
+          let routeDay = null;
+          let routeCity = null;
+
+          checkboxes.forEach((checkbox) => {
+            if (checkbox.checked) {
+              checkedCount++;
+              checkboxValue = checkbox.value;
+
+
+              // 체크된 즐겨찾기 목록의 부가 정보 가져오기
+              const tr = checkbox.closest("tr");
+
+              console.log(tr);
+
+              routeDay = tr.querySelector(".route_day").textContent;
+              routeCity = tr.querySelector(".route_city").textContent;
+            }
+          });
+
+          if (checkedCount === 0) {
+            alert("하나 이상의 즐겨찾기를 선택해주세요.");
+            return;
+          }
+
+          if (checkedCount > 1) {
+            alert("즐겨찾기 목록을 하나만 선택해주세요.");
+            return;
+          }
+
+          const response = await axios({
+            method: "POST",
+            url: "/inshim/essay",
+            data: {
+              checkboxValue: checkboxValue,
+              title: title,
+              content: content,
+              routeDay: routeDay,
+              routeCity: routeCity,
+            },
+          }).then((res) => {
+            console.log("글작성 데이터 확인")
+            console.log(res.data.data);
+            if (res.data.data) {
+              alert("글 작성 성공");
+              document.location.href = "/inshim/essay";
+            } else {
+              alert("글 작성 실패");
+            }
+          });
+
+
+        }
+      </script>
+</body>
+
+</html>
