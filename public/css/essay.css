@@ -1,16 +1,16 @@
 /* 고딕 */
 @font-face {
-  font-family: "KimjungchulGothic-Bold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2")
-    format("woff2");
+  font-family: 'KimjungchulGothic-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2')
+    format('woff2');
   font-weight: 400;
   font-style: normal;
 }
 /* 명조 */
 @font-face {
-  font-family: "KimjungchulMyungjo-Bold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2")
-    format("woff2");
+  font-family: 'KimjungchulMyungjo-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2')
+    format('woff2');
   font-weight: 400;
   font-style: normal;
 }
@@ -29,7 +29,7 @@
 html {
   overflow-y: scroll;
   overflow-x: hidden;
-  font-family: "KimjungchulGothic-Bold", sans-serif;
+  font-family: 'KimjungchulGothic-Bold', sans-serif;
 }
 .sub-header {
   display: flex;
@@ -82,7 +82,7 @@ html {
   padding: 20px;
   text-decoration: none;
   color: black;
-  font-family: "KimjungchulMyungjo-Bold", sans-serif;
+  font-family: 'KimjungchulMyungjo-Bold', sans-serif;
 }
 
 h2 {
@@ -130,8 +130,8 @@ table {
   width: 100%;
   font-size: 14px;
   /* border-bottom: 1px solid #29367c; */
-  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-    "Malgun Gothic", "맑은 고딕", arial, 굴림, Gulim, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', arial, 굴림,
+    Gulim, sans-serif;
   /* border-top: 1px solid #444444; */
   border-collapse: collapse;
 }
@@ -159,7 +159,7 @@ td {
 .essayWtBt {
   background-color: var(--white);
   font-weight: bold;
-  font-family: "KimjungchulGothic-Bold", sans-serif;
+  font-family: 'KimjungchulGothic-Bold', sans-serif;
   height: 27px;
   border-width: 1px;
   border-radius: 2px;

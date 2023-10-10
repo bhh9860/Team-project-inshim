@@ -1,26 +1,25 @@
 /* 고딕 */
 @font-face {
-  font-family: "KimjungchulGothic-Bold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2")
-    format("woff2");
+  font-family: 'KimjungchulGothic-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2')
+    format('woff2');
   font-weight: 400;
   font-style: normal;
 }
 
 /* 명조 */
 @font-face {
-  font-family: "KimjungchulMyungjo-Bold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2")
-    format("woff2");
+  font-family: 'KimjungchulMyungjo-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2')
+    format('woff2');
   font-weight: 400;
   font-style: normal;
 }
 
 /* 스위트 */
 @font-face {
-  font-family: "SUITE-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2")
-    format("woff2");
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
@@ -41,7 +40,7 @@
 html {
   overflow-y: scroll;
   overflow-x: hidden;
-  font-family: "SUITE-Regular", sans-serif;
+  font-family: 'SUITE-Regular', sans-serif;
 }
 
 body {
@@ -64,7 +63,7 @@ body {
   margin: 5px;
   position: relative;
   overflow: hidden;
-  font-family: "SUITE-Regular", sans-serif;
+  font-family: 'SUITE-Regular', sans-serif;
 }
 
 .box img {
@@ -119,7 +118,7 @@ footer {
   margin-top: 20px;
   font-size: var(--font-sm);
   background-color: #f7f7f7;
-  font-family: "SUITE-Regular", sans-serif;
+  font-family: 'SUITE-Regular', sans-serif;
 }
 
 .inner-footerbox {
@@ -132,7 +131,7 @@ footer .footer-logo {
   font-size: 30px;
   padding: 20px;
   padding-left: 5px;
-  font-family: "KimjungchulMyungjo-Bold", sans-serif;
+  font-family: 'KimjungchulMyungjo-Bold', sans-serif;
 }
 
 footer .footer-copyright {

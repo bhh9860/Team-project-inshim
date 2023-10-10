@@ -1,17 +1,16 @@
 /* 스위트 */
 @font-face {
-  font-family: "SUITE-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2")
-    format("woff2");
+  font-family: 'SUITE-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
 
 /* 고딕 */
 @font-face {
-  font-family: "KimjungchulGothic-Bold";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2")
-    format("woff2");
+  font-family: 'KimjungchulGothic-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulGothic-Bold.woff2')
+    format('woff2');
   font-weight: 400;
   font-style: normal;
 }
@@ -31,7 +30,7 @@
 
 /* header css */
 .sub-header {
-  font-family: "SUITE-Regular", sans-serif;
+  font-family: 'SUITE-Regular', sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -90,7 +89,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  font-family: "SUITE-Regular", sans-serif;
+  font-family: 'SUITE-Regular', sans-serif;
 }
 
 .header-logo a {
@@ -99,7 +98,7 @@
   padding: 20px;
   text-decoration: none;
   color: black;
-  font-family: "KimjungchulMyungjo-Bold", sans-serif;
+  font-family: 'KimjungchulMyungjo-Bold', sans-serif;
 }
 
 .header-logo a:hover {
@@ -137,7 +136,7 @@
 }
 
 .modal-body input {
-  font-family: "SUITE-Regular";
+  font-family: 'SUITE-Regular';
   display: block;
   position: relative;
   left: 20%;
@@ -151,7 +150,7 @@
 
 .modal-footer button {
   display: block;
-  font-family: "SUITE-Regular";
+  font-family: 'SUITE-Regular';
   width: 100%;
   padding: 10px;
   margin-top: 10px;
@@ -166,7 +165,7 @@
   background-color: black !important;
 }
 
-form[name="register"] {
+form[name='register'] {
   position: relative;
 }
 
@@ -180,7 +179,7 @@ form[name="register"] {
   padding: 10px;
 }
 
-form[name="register"] input {
+form[name='register'] input {
   display: block;
   position: relative;
   height: 40%;

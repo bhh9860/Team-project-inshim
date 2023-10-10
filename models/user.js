@@ -1,7 +1,7 @@
 //user테이블 정의
 const User = (Sequelize, DataTypes) => {
   return Sequelize.define(
-    "User", //시퀄라이즈에서 사용하는 이름
+    'User', //시퀄라이즈에서 사용하는 이름
     {
       userinfo_id: {
         type: DataTypes.INTEGER,
@@ -31,7 +31,7 @@ const User = (Sequelize, DataTypes) => {
       },
     },
     {
-      tableName: "user",
+      tableName: 'user',
       freezeTableName: true,
       timestamps: false,
     }

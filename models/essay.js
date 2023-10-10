@@ -1,5 +1,5 @@
-const User = require("./user");
-const Route = require("./route");
+const User = require('./user');
+const Route = require('./route');
 
 // //user테이블 정의
 // const Essay = (Sequelize, DataTypes) => {
@@ -46,7 +46,7 @@ const Route = require("./route");
 
 const Essay = (Sequelize, DataTypes) => {
   const EssayModel = Sequelize.define(
-    "Essay",
+    'Essay',
     {
       F_userinfo_id: {
         type: DataTypes.INTEGER,
@@ -77,7 +77,7 @@ const Essay = (Sequelize, DataTypes) => {
       },
     },
     {
-      tableName: "essay",
+      tableName: 'essay',
       freezeTableName: true,
       timestamps: false,
     }
@@ -85,13 +85,13 @@ const Essay = (Sequelize, DataTypes) => {
 
   EssayModel.associate = (models) => {
     EssayModel.belongsTo(models.User, {
-      foreignKey: "F_userinfo_id",
-      targetKey: "userinfo_id",
+      foreignKey: 'F_userinfo_id',
+      targetKey: 'userinfo_id',
     });
 
     EssayModel.belongsTo(models.Route, {
-      foreignKey: "F_route_id",
-      targetKey: "route_id",
+      foreignKey: 'F_route_id',
+      targetKey: 'route_id',
     });
   };
 

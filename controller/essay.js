@@ -1,6 +1,6 @@
-const models = require("../models");
-const { sequelize } = require("../models/index");
-const session = require("express-session");
+const models = require('../models');
+const { sequelize } = require('../models/index');
+const session = require('express-session');
 
 exports.Cgetwrite = (req, res) => {
   // const userId = req.session.loggedin_user.userinfo_id;
@@ -21,18 +21,18 @@ exports.Cgetwrite = (req, res) => {
       .then((results) => {
         // console.log(results);
         if (results.length === 0) {
-          console.log("데이터값 없음");
-          res.render("write", { userId, data: null }); // 빈 데이터를 전달
+          console.log('데이터값 없음');
+          res.render('write', { userId, data: null }); // 빈 데이터를 전달
         } else {
-          res.render("write", { userId, data: results });
+          res.render('write', { userId, data: results });
         }
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send("원시 쿼리 실행 오류");
+        res.status(500).send('원시 쿼리 실행 오류');
       });
   } else if (userId === undefined) {
-    res.status(500).send("로그인을 먼저 진행해주세요!");
+    res.status(500).send('로그인을 먼저 진행해주세요!');
     return;
   }
 };
@@ -55,43 +55,39 @@ exports.Cpostessay = (req, res) => {
       }
     )
     .then(() => {
-      console.log("데이터베이스에 값 삽입 완료");
+      console.log('데이터베이스에 값 삽입 완료');
       // 삽입 성공 시 true 보내줌
       res.send({ data: true });
     })
     .catch((error) => {
-      console.log("데이터베이스 삽입 오류:", error);
+      console.log('데이터베이스 삽입 오류:', error);
       // 삽입 오류 처리
     });
 };
 
 exports.Cgetessay = (req, res) => {
   sequelize
-    .query(
-      "SELECT *, date_format(regdate, '%Y-%m-%d') AS formatted_regdate FROM `detail_essay`",
-      {
-        type: sequelize.QueryTypes.SELECT,
-      }
-    )
+    .query("SELECT *, date_format(regdate, '%Y-%m-%d') AS formatted_regdate FROM `detail_essay`", {
+      type: sequelize.QueryTypes.SELECT,
+    })
     .then((result) => {
-      res.render("essay", { data: result });
+      res.render('essay', { data: result });
     });
 };
 
 exports.Cgetidx = (req, res) => {
   const numberId = req.params.idx;
   sequelize
-    .query(
-      "SELECT *, date_format(regdate, '%Y-%m-%d %H:%i:%s') AS formatted_regdate FROM `detail_essay`",
-      { type: sequelize.QueryTypes.SELECT }
-    )
+    .query("SELECT *, date_format(regdate, '%Y-%m-%d %H:%i:%s') AS formatted_regdate FROM `detail_essay`", {
+      type: sequelize.QueryTypes.SELECT,
+    })
     .then((result) => {
       if (result.length === 0) {
         // 해당 조건에 맞는 레코드가 없는 경우 처리
-        res.render("essayView", { data: null });
+        res.render('essayView', { data: null });
       } else {
         const record = result[numberId - 1]; // 첫 번째 요소 사용
-        res.render("essayView", { data: record });
+        res.render('essayView', { data: record });
       }
     });
 };

@@ -1,7 +1,7 @@
 //user테이블 정의
 const Route = (Sequelize, DataTypes) => {
   return Sequelize.define(
-    "Route", //시퀄라이즈에서 사용하는 이름
+    'Route', //시퀄라이즈에서 사용하는 이름
     {
       route_id: {
         type: DataTypes.INTEGER,
@@ -16,10 +16,10 @@ const Route = (Sequelize, DataTypes) => {
       route_day: {
         type: DataTypes.STRING(20),
         allowNull: false,
-      }
+      },
     },
     {
-      tableName: "route",
+      tableName: 'route',
       freezeTableName: true,
       timestamps: false,
     }

@@ -1,5 +1,5 @@
-const models = require("../models");
-const { sequelize } = require("../models/index");
+const models = require('../models');
+const { sequelize } = require('../models/index');
 
 //루트테이블의 도시들 불러오기
 exports.route = (req, res) => {
@@ -23,7 +23,7 @@ exports.route = (req, res) => {
 
     models.detail.findAll().then((detailTable) => {
       // console.log(detailTable[0].dataValues)
-      res.render("userinfo.ejs", {
+      res.render('userinfo.ejs', {
         routeCity: routeCityResultArray,
         routeDay: routeDayResultArray,
         detailTable: detailTable,
@@ -35,7 +35,7 @@ exports.route = (req, res) => {
 //route_id를 통해 detail테이블의 정보 불러오기
 exports.detail = (req, res) => {
   //지역과 날짜가 all일 때
-  if (req.body.city === "all" && req.body.day === "all") {
+  if (req.body.city === 'all' && req.body.day === 'all') {
     models.detail.findAll().then((data) => {
       detailArray = [];
       for (let j = 0; j < data.length; j++) {
@@ -44,16 +44,16 @@ exports.detail = (req, res) => {
       res.send(detailArray);
     });
     //지역만 all일 때
-  } else if (req.body.city === "all" && req.body.day !== "all") {
-    console.log("aaaaaaaaaaaaa", req.body.city);
+  } else if (req.body.city === 'all' && req.body.day !== 'all') {
+    console.log('aaaaaaaaaaaaa', req.body.city);
     models.Route.findAll({
-      attributes: ["route_id"],
+      attributes: ['route_id'],
       where: {
         route_day: req.body.day,
       },
     }).then((data) => {
       for (let i = 0; i < data.length; i++) {
-        console.log("route_id는", data[i].dataValues.route_id);
+        console.log('route_id는', data[i].dataValues.route_id);
       }
       models.detail.findAll().then((dataa) => {
         detailArray = [];
@@ -63,20 +63,20 @@ exports.detail = (req, res) => {
             data[j].dataValues.route_id,
           ]);
         }
-        console.log("detailArray:", detailArray);
+        console.log('detailArray:', detailArray);
         res.send(detailArray);
       });
     });
     //날짜만 all일 때
-  } else if (req.body.city !== "all" && req.body.day === "all") {
+  } else if (req.body.city !== 'all' && req.body.day === 'all') {
     models.Route.findAll({
-      attributes: ["route_id"],
+      attributes: ['route_id'],
       where: {
         route_city: req.body.city,
       },
     }).then((data) => {
       for (let i = 0; i < data.length; i++) {
-        console.log("route_id는", data[i].dataValues.route_id);
+        console.log('route_id는', data[i].dataValues.route_id);
       }
       models.detail.findAll().then((dataa) => {
         detailArray = [];
@@ -86,7 +86,7 @@ exports.detail = (req, res) => {
             data[j].dataValues.route_id,
           ]);
         }
-        console.log("detailArray:", detailArray);
+        console.log('detailArray:', detailArray);
         res.send(detailArray);
       });
     });
@@ -95,7 +95,7 @@ exports.detail = (req, res) => {
   } else {
     // console.log(req.city)
     models.Route.findAll({
-      attributes: ["route_id"],
+      attributes: ['route_id'],
       where: {
         route_city: req.body.city,
         route_day: req.body.day,
@@ -127,45 +127,39 @@ exports.Cpostroute = (req, res) => {
     const routeId = req.body.routeId;
     // 중복 삽입 여부 확인
     sequelize
-      .query(
-        "SELECT COUNT(*) AS count FROM bookmark WHERE F_userinfo_id = ? AND F_route_id = ?",
-        {
-          replacements: [userId, routeId],
-          type: sequelize.QueryTypes.SELECT,
-        }
-      )
+      .query('SELECT COUNT(*) AS count FROM bookmark WHERE F_userinfo_id = ? AND F_route_id = ?', {
+        replacements: [userId, routeId],
+        type: sequelize.QueryTypes.SELECT,
+      })
       .then((results) => {
         const count = results[0].count;
         if (count === 0) {
           // 중복이 아닌 경우에만 삽입 수행
           sequelize
-            .query(
-              "INSERT INTO bookmark (F_userinfo_id, F_route_id) VALUES (?, ?)",
-              {
-                replacements: [userId, routeId],
-                type: sequelize.QueryTypes.INSERT,
-              }
-            )
+            .query('INSERT INTO bookmark (F_userinfo_id, F_route_id) VALUES (?, ?)', {
+              replacements: [userId, routeId],
+              type: sequelize.QueryTypes.INSERT,
+            })
             .then(() => {
-              console.log("데이터베이스에 삽입 완료");
+              console.log('데이터베이스에 삽입 완료');
               res.send({ success: true });
             })
             .catch((error) => {
-              console.log("데이터베이스 삽입 오류:", error);
+              console.log('데이터베이스 삽입 오류:', error);
               res.send({ success: false });
             });
         } else {
-          console.log("이미 존재하는 데이터입니다.");
+          console.log('이미 존재하는 데이터입니다.');
           res.send({ success: false });
         }
       })
       .catch((error) => {
-        console.error("데이터베이스 조회 오류:", error);
+        console.error('데이터베이스 조회 오류:', error);
         res.send({ success: false });
       });
-    console.log("userId: " + userId); // 로그인 후에
+    console.log('userId: ' + userId); // 로그인 후에
   } else {
-    console.log("로그인 먼저!");
+    console.log('로그인 먼저!');
     res.send({ login: false });
   }
 };

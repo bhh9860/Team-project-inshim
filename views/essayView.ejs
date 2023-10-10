@@ -35,45 +35,20 @@
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
-                  로그인
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">로그인</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <form name="login">
-                  <input
-                    name="login_user_id"
-                    id="login_uesr_id"
-                    type="text"
-                    placeholder="아이디"
-                    required
-                  />
+                  <input name="login_user_id" id="login_uesr_id" type="text" placeholder="아이디" required />
                   <br />
-                  <input
-                    name="login_user_pw"
-                    id="login_user_pw"
-                    type="password"
-                    placeholder="비밀번호"
-                    required
-                  />
+                  <input name="login_user_pw" id="login_user_pw" type="password" placeholder="비밀번호" required />
                   <br />
                 </form>
               </div>
               <div class="modal-footer">
-                <button class="btn btn-primary" onclick="loginFunc()">
-                  로그인
-                </button>
-                <button
-                  class="btn btn-primary"
-                  data-bs-target="#popup_register"
-                  data-bs-toggle="modal"
-                >
+                <button class="btn btn-primary" onclick="loginFunc()">로그인</button>
+                <button class="btn btn-primary" data-bs-target="#popup_register" data-bs-toggle="modal">
                   회원가입
                 </button>
               </div>
@@ -90,15 +65,8 @@
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">
-                  회원가입
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">회원가입</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <form name="register">
@@ -110,13 +78,7 @@
                     type="text"
                     placeholder="아이디를 입력해주세요"
                   />
-                  <button
-                    type="button"
-                    id="check_user_id"
-                    onclick="checkUserId()"
-                  >
-                    아이디 중복 검사
-                  </button>
+                  <button type="button" id="check_user_id" onclick="checkUserId()">아이디 중복 검사</button>
                   <br />
                   <label for="register_user_pw">비밀번호</label>
                   <br />
@@ -148,52 +110,24 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button class="btn btn-primary" onclick="registFunc()">
-                  회원가입
-                </button>
+                <button class="btn btn-primary" onclick="registFunc()">회원가입</button>
               </div>
             </div>
           </div>
         </div>
-        <a
-          class="btn"
-          data-bs-toggle="modal"
-          href="#popup_login_register"
-          role="button"
-          >로그인/회원가입</a
-        >
+        <a class="btn" data-bs-toggle="modal" href="#popup_login_register" role="button">로그인/회원가입</a>
       </div>
       <div id="sub-mypage" style="display: none">
         <!-- Button trigger modal -->
-        <button
-          type="button"
-          class="btn"
-          data-bs-toggle="modal"
-          data-bs-target="#popup_mypage"
-        >
-          마이페이지
-        </button>
+        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#popup_mypage">마이페이지</button>
 
         <!-- Modal -->
-        <div
-          class="modal fade"
-          id="popup_mypage"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
+        <div class="modal fade" id="popup_mypage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">
-                  마이페이지
-                </h1>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">마이페이지</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <div id="user_info">
@@ -212,39 +146,17 @@
                 </div>
                 <form id="change_password_form" name="change_password_form">
                   <label for="current_password">현재 비밀번호:</label>
-                  <input
-                    type="password"
-                    id="current_password"
-                    name="currentPassword"
-                    required
-                  />
+                  <input type="password" id="current_password" name="currentPassword" required />
                   <br />
                   <label for="new_password">새로운 비밀번호:</label>
-                  <input
-                    type="password"
-                    id="new_password"
-                    name="newPassword"
-                    required
-                  />
+                  <input type="password" id="new_password" name="newPassword" required />
                   <br />
                 </form>
                 <div id="result"></div>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  onclick="logoutFunc()"
-                >
-                  로그아웃
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  onclick="pwChangeFunc()"
-                >
-                  비밀번호 변경
-                </button>
+                <button type="button" class="btn btn-secondary" onclick="logoutFunc()">로그아웃</button>
+                <button type="button" class="btn btn-primary" onclick="pwChangeFunc()">비밀번호 변경</button>
               </div>
             </div>
           </div>
@@ -318,7 +230,7 @@
 
     <script>
       function backessay() {
-        document.location.href = "/inshim/essay";
+        document.location.href = '/inshim/essay';
       }
 
       // async function submitReply() {
